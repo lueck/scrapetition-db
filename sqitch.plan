@@ -1,3 +1,8 @@
 %syntax-version=1.0.0
 %project=scrapetition-sql
 
+url 2019-12-17T11:16:06Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add the url table
+url_scraped [url] 2019-12-17T12:47:27Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for scraped urls metadata.
+comments [url_scraped url] 2019-12-17T16:29:17Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for comments.
+url_scraped_insert_trigger [url url_scraped] 2019-12-17T18:48:51Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a trigger for inserting into url_scraped view.
+comments_insert_trigger [url comments] 2019-12-19T12:44:37Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add trigger for inserting comments on view comments

@@ -22,7 +22,8 @@ CREATE TABLE IF NOT EXISTS comment (
        down_votes integer,
        url_id     integer NOT NULL,
        -- important, when deleted
-       scrape_date timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+       first_scraped timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+       last_scraped  timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
        scraper 	  text,
        CONSTRAINT unique_in_domain UNIQUE (id, domain),
        CONSTRAINT url_source FOREIGN KEY (url_id) REFERENCES url(url_id));
@@ -46,12 +47,14 @@ WITH RECURSIVE
 	  up_votes,
 	  down_votes,
 	  url,
-	  scrape_date,
+	  first_scraped,
+	  last_scraped,
 	  scraper,
 	  height)
      AS (
      SELECT c.id, c.domain, c.text, c.title, c."user", c.name, c.date_informal, c.date,
-     	    c.parent, c.id, c.up_votes, c.down_votes, url.url, c.scrape_date, c.scraper, 0
+     	    c.parent, c.id, c.up_votes, c.down_votes, url.url,
+	    c.first_scraped, c.last_scraped, c.scraper, 0
 	    FROM comment AS c
 	    LEFT JOIN url ON c.url_id = url.url_id
 	    WHERE parent is NULL
@@ -59,8 +62,9 @@ WITH RECURSIVE
      SELECT c.id, c.domain, c.text,
      	    c.title, c.user, c.name, c.date_informal,
 	    c.date, c.parent, dis.thread, c.up_votes,
-	    c.down_votes, url.url, c.scrape_date,
-	    c.scraper, dis.height+1
+	    c.down_votes, url.url,
+	    c.first_scraped, c.last_scraped, c.scraper,
+	    dis.height+1
      FROM comment AS c, dis, url
      WHERE c.parent = dis.id AND c.url_id = url.url_id)
 SELECT * FROM dis;
