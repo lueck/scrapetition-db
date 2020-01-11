@@ -1,0 +1,37 @@
+#+PROPERTY: header-args:sql :engine postgresql :database scrapetition_test
+
+* Add an url
+#+BEGIN_SRC sql
+INSERT INTO url (url) VALUES
+('http://www.feu.de/ksw/ndl'),
+('http://www.feu.de/ksw'),
+('http://www.feu.de/mi');
+#+END_SRC
+
+#+RESULTS:
+| INSERT 0 3 |
+|------------|
+
+* Add a comment before domain and article table are created
+#+BEGIN_SRC sql
+INSERT INTO comment
+(id, domain, item, text, title, name, url_id, scraper)
+VALUES
+('k1', 'www.feu.de', 'http://www.feu.de/ksw', 
+'Hallo Welt!', 'Hallo', 'Hallo-Sager',
+(SELECT url_id FROM url WHERE url = 'http://www.feu.de/ksw/ndl'),
+'Test'),
+('k2', 'www.feu.de', 'http://www.feu.de/ksw', 
+'Hello World!', 'Hello', 'Hello-Sayer',
+(SELECT url_id FROM url WHERE url = 'http://www.feu.de/ksw/ndl'),
+'Test'),
+('k3', 'www.feu.de', 'http://www.feu.de/mi', 
+'Hello World!', 'Hello', 'Hello-Sayer',
+(SELECT url_id FROM url WHERE url = 'http://www.feu.de/ksw/ndl'),
+'Test');
+#+END_SRC
+
+#+RESULTS:
+| INSERT 0 3 |
+|------------|
+

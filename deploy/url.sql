@@ -1,4 +1,4 @@
--- Deploy scrapetition-sql:url to sqlite
+-- Deploy scrapetition-sql:url to pg
 
 BEGIN;
 
