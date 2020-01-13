@@ -5,7 +5,7 @@ BEGIN;
 ALTER TABLE IF EXISTS comment
       ADD COLUMN IF NOT EXISTS item TEXT;
 
-UPDATE comment SET item = quote_nullable(get_article(article_id));
+-- UPDATE comment SET item = quote_nullable(get_article(article_id)) ON CONFLICT DO NOTHING;
 
 ALTER TABLE IF EXISTS comment
       DROP COLUMN IF EXISTS article_id;

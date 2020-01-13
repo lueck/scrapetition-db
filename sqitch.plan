@@ -11,3 +11,11 @@ comment_voting [user comments url] 2019-12-20T15:19:22Z Christian Lück <christi
 # domain [url comments] 2019-12-22T00:48:41Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for domains.
 article [url comments] 2020-01-08T19:20:06Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for articles, i.e. a redactional item a comment refers to.
 parent_voting [comments] 2020-01-10T21:37:04Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add columns for voting to comment table.
+schema 2020-01-12T13:39:27Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a scrapetition data schema and move tables into it.
+roles [schema] 2020-01-12T22:01:54Z Christian Lück <christian.lueck@ruhr-uni-bochum.de># Add roles.
+set_meta_on_insert [schema roles] 2020-01-12T23:09:00Z Christian Lück <christian.lueck@ruhr-uni-bochum.de># Add trigger function for setting meta data on insert.
+set_meta_on_update [schema roles] 2020-07-12T23:12:35Z Christian Lück <christian.lueck@ruhr-uni-bochum.de># Add trigger function for setting meta on update.
+adjust_privilege [schema roles] 2020-01-12T23:17:04Z Christian Lück <christian.lueck@ruhr-uni-bochum.de># Add functions which help with privileges.
+tag [schema] 2020-01-11T01:18:22Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
+comment_tag [schema roles tag comments set_meta_on_insert set_meta_on_update adjust_privilege] 2020-01-11T01:18:22Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
+article_tag [schema roles tag article set_meta_on_insert set_meta_on_update adjust_privilege] 2020-01-11T01:18:23Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
