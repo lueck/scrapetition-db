@@ -1,7 +1,9 @@
 # A PostgreSQL Database for Scrapetition
 
-This database schema can be deployed with
-[sqitch](https://sqitch.org/) from the root folder of this repository:
+This database schema for
+[`scrapetition`](https://github.com/lueck/scrapetition) can be
+deployed with [sqitch](https://sqitch.org/) from the root folder of
+this repository:
 
 	sqitch deploy
 
