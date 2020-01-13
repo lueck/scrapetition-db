@@ -1,4 +1,4 @@
--- Deploy scrapetition-sql:tag to pg
+-- Deploy scrapetition-sql:comment_tag to pg
 -- requires: schema
 -- requires: role
 -- requires: comments

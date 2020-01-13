@@ -19,3 +19,5 @@ adjust_privilege [schema roles] 2020-01-12T23:17:04Z Christian Lück <christian.
 tag [schema] 2020-01-11T01:18:22Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
 comment_tag [schema roles tag comments set_meta_on_insert set_meta_on_update adjust_privilege] 2020-01-11T01:18:22Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
 article_tag [schema roles tag article set_meta_on_insert set_meta_on_update adjust_privilege] 2020-01-11T01:18:23Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
+user_tag [schema roles tag user set_meta_on_insert set_meta_on_update adjust_privilege] 2020-01-11T01:18:23Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
+url_tag [schema roles tag url set_meta_on_insert set_meta_on_update adjust_privilege] 2020-01-11T01:18:23Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
