@@ -30,6 +30,10 @@ DROP TRIGGER adjust_privilege_on_insert ON scrapetition.tag;
 
 DROP TRIGGER adjust_privilege_on_update ON scrapetition.tag;
 
-DROP TABLE scrapetition.tag;
+DROP FUNCTION scrapetition.evaluate_tag();
+
+DROP TABLE IF EXISTS scrapetition.tag;
+
+DROP TYPE IF EXISTS scrapetition.tag_type;
 
 COMMIT;

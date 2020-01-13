@@ -2,6 +2,9 @@
 
 -- Start transaction and plan the tests
 BEGIN;
+
+SET search_path TO scrapetition, public;
+
 SELECT plan(9);
 
 -- Tests on url and url_scraped

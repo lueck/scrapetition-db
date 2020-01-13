@@ -14,7 +14,8 @@ CREATE TABLE IF NOT EXISTS scrapetition.comment_tag (
        namespace TEXT NOT NULL,
        tag TEXT NOT NULL,
        text_value TEXT,
-       numeric_value FLOAT,
+       integer_value INTEGER,
+       float_value FLOAT,
        -- meta data for all types of tags
        created_at timestamp not null,
        created_by varchar not null,
@@ -28,6 +29,13 @@ CREATE TABLE IF NOT EXISTS scrapetition.comment_tag (
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE scrapetition.comment_tag
 TO scrapetitionuser, scrapetitioneditor, scrapetitionadmin;
+
+
+CREATE TRIGGER evaluate_tag_on_insert BEFORE INSERT ON scrapetition.comment_tag
+    FOR EACH ROW EXECUTE PROCEDURE scrapetition.evaluate_tag();
+
+CREATE TRIGGER evaluate_tag_on_update BEFORE UPDATE ON scrapetition.comment_tag
+    FOR EACH ROW EXECUTE PROCEDURE scrapetition.evaluate_tag();
 
 
 CREATE TRIGGER tag_set_meta_on_insert BEFORE INSERT ON scrapetition.comment_tag

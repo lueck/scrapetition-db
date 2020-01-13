@@ -22,6 +22,11 @@ FROM scrapetitionuser, scrapetitioneditor, scrapetitionadmin;
 -- REVOKE ALL PRIVILEGES ON scrapetition.comment_tag_tag_id_seq
 -- FROM scrapetitionuser, scrapetitioneditor, scrapetitionadmin;
 
+DROP TRIGGER evaluate_tag_on_insert ON scrapetition.comment_tag;
+
+DROP TRIGGER evaluate_tag_on_update ON scrapetition.comment_tag;
+
+
 DROP TRIGGER tag_set_meta_on_update ON scrapetition.comment_tag;
 
 DROP TRIGGER tag_set_meta_on_insert ON scrapetition.comment_tag;
