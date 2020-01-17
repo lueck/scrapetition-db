@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE IF EXISTS url;
+DROP TABLE IF EXISTS scrapetition.url;
 
 COMMIT;

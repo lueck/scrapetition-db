@@ -2,8 +2,8 @@
 
 BEGIN;
 
-DROP VIEW IF EXISTS url_source;
+DROP VIEW IF EXISTS scrapetition.url_source;
 
-DROP TABLE IF EXISTS url_scraped;
+DROP TABLE IF EXISTS scrapetition.url_scraped;
 
 COMMIT;

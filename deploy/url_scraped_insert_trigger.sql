@@ -5,7 +5,7 @@
 BEGIN;
 
 -- First make sure, that the urls are the url table 	 
-CREATE OR REPLACE FUNCTION url_source_insert()
+CREATE OR REPLACE FUNCTION scrapetition.url_source_insert()
 RETURNS TRIGGER AS
 $$
 BEGIN
@@ -20,7 +20,7 @@ END
 $$ LANGUAGE plpgsql;
 
 
-CREATE TRIGGER url_source_insert INSTEAD OF INSERT ON url_source
-FOR EACH ROW EXECUTE PROCEDURE url_source_insert();
+CREATE TRIGGER url_source_insert INSTEAD OF INSERT ON scrapetition.url_source
+FOR EACH ROW EXECUTE PROCEDURE scrapetition.url_source_insert();
 
 COMMIT;

@@ -2,8 +2,8 @@
 
 BEGIN;
 
-DROP TRIGGER IF EXISTS url_source_insert ON url_source;
+DROP TRIGGER IF EXISTS url_source_insert ON scrapetition.url_source;
 
-DROP FUNCTION IF EXISTS url_source_insert();
+DROP FUNCTION IF EXISTS scrapetition.url_source_insert();
 
 COMMIT;

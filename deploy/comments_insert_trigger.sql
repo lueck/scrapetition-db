@@ -6,24 +6,24 @@
 
 BEGIN;
 
-CREATE OR REPLACE FUNCTION comments_insert()
+CREATE OR REPLACE FUNCTION scrapetition.comments_insert()
 RETURNS TRIGGER AS
 $$
 BEGIN
-    INSERT INTO url (url)
+    INSERT INTO scrapetition.url (url)
     	   VALUES (NEW.url) ON CONFLICT DO NOTHING;
-    INSERT INTO "user" ("user", name)
+    INSERT INTO scrapetition."user" ("user", name)
     	   VALUES (NEW.user, name) ON CONFLICT DO NOTHING;
-    INSERT INTO comment
+    INSERT INTO scrapetition.comment
     (id, domain, text, title, user_id, name, date_informal, date,
     parent, thread, up_votes, down_votes, url_id, scraper)
     VALUES
     (NEW.id, NEW.domain, NEW.text, NEW.title,
-    (SELECT user_id FROM "user" WHERE "user" = NEW.user),
+    (SELECT user_id FROM scrapetition."user" WHERE "user" = NEW.user),
     NEW.name,
     NEW.date_informal, NEW.date, NEW.parent, NEW.thread, NEW.up_votes,
     NEW.down_votes,
-    (SELECT url_id FROM url WHERE url = NEW.url),
+    (SELECT url_id FROM scrapetition.url WHERE url = NEW.url),
     NEW.scraper)
     ON CONFLICT DO NOTHING;
     -- DO UPDATE SET (last_scraped, text) = (CURRENT_TIMESTAMP, NEW.text)
@@ -32,7 +32,7 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
-CREATE TRIGGER comments_insert INSTEAD OF INSERT ON comments
-FOR EACH ROW EXECUTE PROCEDURE comments_insert();
+CREATE TRIGGER comments_insert INSTEAD OF INSERT ON scrapetition.comments
+FOR EACH ROW EXECUTE PROCEDURE scrapetition.comments_insert();
 
 COMMIT;

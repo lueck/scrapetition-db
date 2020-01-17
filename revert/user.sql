@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE IF EXISTS "user";
+DROP TABLE IF EXISTS scrapetition."user";
 
 COMMIT;

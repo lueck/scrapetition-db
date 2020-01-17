@@ -2,8 +2,6 @@
 
 BEGIN;
 
-DROP VIEW IF EXISTS comments;
-
-DROP TABLE IF EXISTS comment;
+DROP TABLE IF EXISTS scrapetition.comment;
 
 COMMIT;

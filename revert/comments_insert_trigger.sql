@@ -2,8 +2,8 @@
 
 BEGIN;
 
-DROP TRIGGER IF EXISTS comments_insert ON comments;
+DROP TRIGGER IF EXISTS comments_insert ON scrapetition.comments;
 
-DROP FUNCTION IF EXISTS comments_insert();
+DROP FUNCTION IF EXISTS scrapetition.comments_insert();
 
 COMMIT;

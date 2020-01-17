@@ -2,6 +2,6 @@
 
 BEGIN;
 
-DROP TABLE IF EXISTS comment_voting;
+DROP TABLE IF EXISTS scrapetition.comment_voting;
 
 COMMIT;

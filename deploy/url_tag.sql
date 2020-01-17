@@ -27,6 +27,9 @@ CREATE TABLE IF NOT EXISTS scrapetition.url_tag (
        CONSTRAINT tag_unique_for_url UNIQUE (url_id, namespace, tag));
 
 
+GRANT SELECT ON TABLE scrapetition.url_tag
+TO scraper;
+
 GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE scrapetition.url_tag
 TO scrapetitionuser, scrapetitioneditor, scrapetitionadmin;
 

@@ -27,6 +27,9 @@ CREATE TABLE IF NOT EXISTS scrapetition.comment_tag (
        CONSTRAINT tag_unique_for_comment UNIQUE (comment_id, tag, namespace));
 
 
+GRANT SELECT ON TABLE scrapetition.comment_tag
+TO scraper;
+
 GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE scrapetition.comment_tag
 TO scrapetitionuser, scrapetitioneditor, scrapetitionadmin;
 

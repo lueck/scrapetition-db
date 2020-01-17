@@ -1,21 +1,23 @@
 %syntax-version=1.0.0
 %project=scrapetition-sql
 
-url 2019-12-17T11:16:06Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add the url table
-url_scraped [url] 2019-12-17T12:47:27Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for scraped urls metadata.
-user [url] 2019-12-20T14:05:09Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for users scraped from websites
-comments [url user] 2019-12-17T16:29:17Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for comments.
-url_scraped_insert_trigger [url url_scraped] 2019-12-17T18:48:51Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a trigger for inserting into url_scraped view.
-# comments_insert_trigger [url comments] 2019-12-19T12:44:37Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add trigger for inserting comments on view comments
-comment_voting [user comments url] 2019-12-20T15:19:22Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for voting about a comment
-# domain [url comments] 2019-12-22T00:48:41Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for domains.
-article [url comments] 2020-01-08T19:20:06Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for articles, i.e. a redactional item a comment refers to.
-parent_voting [comments] 2020-01-10T21:37:04Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add columns for voting to comment table.
 schema 2020-01-12T13:39:27Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a scrapetition data schema and move tables into it.
 roles [schema] 2020-01-12T22:01:54Z Christian Lück <christian.lueck@ruhr-uni-bochum.de># Add roles.
 set_meta_on_insert [schema roles] 2020-01-12T23:09:00Z Christian Lück <christian.lueck@ruhr-uni-bochum.de># Add trigger function for setting meta data on insert.
 set_meta_on_update [schema roles] 2020-07-12T23:12:35Z Christian Lück <christian.lueck@ruhr-uni-bochum.de># Add trigger function for setting meta on update.
 adjust_privilege [schema roles] 2020-01-12T23:17:04Z Christian Lück <christian.lueck@ruhr-uni-bochum.de># Add functions which help with privileges.
+
+url [schema] 2019-12-17T11:16:06Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add the url table
+url_scraped [schema url] 2019-12-17T12:47:27Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for scraped urls metadata.
+url_scraped_insert_trigger [schema url url_scraped] 2019-12-17T18:48:51Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a trigger for inserting into url_scraped view.
+user [url] 2019-12-20T14:05:09Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for users scraped from websites
+article [schema url] 2020-01-08T19:20:06Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for articles, i.e. a redactional item a comment refers to.
+comments [schema url user article] 2019-12-17T16:29:17Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for comments.
+# comments_insert_trigger [schema url comments] 2019-12-19T12:44:37Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add trigger for inserting comments on view comments
+comment_voting [schema user comments url] 2019-12-20T15:19:22Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for voting about a comment
+# domain [schema url comments] 2019-12-22T00:48:41Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add table for domains.
+# parent_voting [schema comments] 2020-01-10T21:37:04Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add columns for voting to comment table.
+
 tag [schema] 2020-01-11T01:18:22Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
 comment_tag [schema roles tag comments set_meta_on_insert set_meta_on_update adjust_privilege] 2020-01-11T01:18:22Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
 article_tag [schema roles tag article set_meta_on_insert set_meta_on_update adjust_privilege] 2020-01-11T01:18:23Z Christian Lück <christian.lueck@ruhr-uni-bochum.de> # Add a table for tags.
