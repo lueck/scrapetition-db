@@ -11,12 +11,6 @@ The default target is a database called `scrapetition_test` on
 localhost. Another target can be specified with `sqitch`'s `-t`
 option.
 
-While the `deploy` command should work cleanly, the `revert` command
-will print some notices from the change `schema` on. The schema name
-`scrapetition` was introduced relatively late and every relation,
-sequence, function etc. is moved into it in the change `schema`. But
-it can not be moved back to `public`, so everything is dropped
-instead. That causes the notices.
 
 ## Testing
 
